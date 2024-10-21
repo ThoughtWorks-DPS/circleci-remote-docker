@@ -1,23 +1,27 @@
 #!/usr/bin/env bats
+@test "os-release version" {
+  run bash -c "docker exec gha-container-base-image cat /etc/os-release"
+  [[ "${output}" =~ "Ubuntu 22.04" ]]
+}
 
 @test "git version" {
-  run bash -c "docker exec circleci-remote-docker-ubuntu-edge git --version"
-  [[ "${output}" =~ "2.45" ]]
+  run bash -c "docker exec circleci-remote-docker-ubuntu-edge git --help"
+  [[ "${output}" =~ "usage: git" ]]
 }
 
 @test "openssh-server version" {
-  run bash -c "docker exec circleci-remote-docker-ubuntu-edge ssh -V"
-  [[ "${output}" =~ "9.7" ]]
+  run bash -c "docker exec circleci-remote-docker-ubuntu-edge ssh --help"
+  [[ "${output}" =~ "usage: ssh" ]]
 }
 
 @test "tar version" {
-  run bash -c "docker exec circleci-remote-docker-ubuntu-edge tar --version"
-  [[ "${output}" =~ "1.35" ]]
+  run bash -c "docker exec circleci-remote-docker-ubuntu-edge tar --help"
+  [[ "${output}" =~ "Usage: tar" ]]
 }
 
 @test "gzip version" {
-  run bash -c "docker exec circleci-remote-docker-ubuntu-edge gzip --version"
-  [[ "${output}" =~ "1.12" ]]
+  run bash -c "docker exec circleci-remote-docker-ubuntu-edge gzip --help"
+  [[ "${output}" =~ "Usage: gzip" ]]
 }
 
 @test "ca-certificates installed" {

@@ -11,7 +11,14 @@
 </div>
 <br />
 
-**Debian version deprecated. 2024.08.1 is last update. Moving to ubutu:oracular as Alpine alternative to be more aligned with CircleCI environment.**  
+**New Package Version Update Release Strategy**  
+
+Starting with this release the twdps convenience images will adopt a new package versioning and build release strategy. Experiments over the last 18 months indicate that 
+
+
+
+
+
 
 
 With inspiration from the CircleCI convenience images, `twdps/circleci-remote-docker` maintains both Alpine and Ubuntu variants with both remote and self-hosted runners in mind. As the name suggests, this image is designed to serve as a starter image for building a use-tailored CircleCI [remote docker executor](https://circleci.com/docs/2.0/custom-images/#section=configuration).  

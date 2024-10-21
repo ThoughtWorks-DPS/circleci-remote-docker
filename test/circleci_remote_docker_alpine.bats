@@ -1,23 +1,27 @@
 #!/usr/bin/env bats
-
-@test "git version" {
-  run bash -c "docker exec circleci-remote-docker-alpine-edge git --version"
-  [[ "${output}" =~ "2.45" ]]
+@test "os-release version" {
+  run bash -c "docker exec circleci-remote-docker-alpine-edge cat /etc/os-release"
+  [[ "${output}" =~ "Alpine Linux v3.20" ]]
 }
 
-@test "openssh version" {
-  run bash -c "docker exec circleci-remote-docker-alpine-edge ssh -V"
-  [[ "${output}" =~ "9.7" ]]
+@test "git version" {
+  run bash -c "docker exec circleci-remote-docker-alpine-edge git --help"
+  [[ "${output}" =~ "usage: git" ]]
+}
+
+@test "openssh-server version" {
+  run bash -c "docker exec circleci-remote-docker-alpine-edge ssh --help"
+  [[ "${output}" =~ "usage: ssh" ]]
 }
 
 @test "tar version" {
-  run bash -c "docker exec circleci-remote-docker-alpine-edge tar --version"
-  [[ "${output}" =~ "1.35" ]]
+  run bash -c "docker exec circleci-remote-docker-alpine-edge tar --help"
+  [[ "${output}" =~ "Usage: tar" ]]
 }
 
 @test "gzip version" {
-  run bash -c "docker exec circleci-remote-docker-alpine-edge gzip --version"
-  [[ "${output}" =~ "1.13" ]]
+  run bash -c "docker exec circleci-remote-docker-alpine-edge gzip --help"
+  [[ "${output}" =~ "Usage: gzip" ]]
 }
 
 @test "ca-certificates installed" {

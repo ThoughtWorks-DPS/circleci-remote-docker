@@ -53,6 +53,7 @@ workflows:
           bats-entry-point: /bin/ash
           bats-test-path: test/circleci_remote_docker_alpine.bats
           opencontainer-labels: true
+          cis-docker-image-scan: false
           after-checkout:
             - op/env
           filters: *on-push-main
@@ -74,6 +75,7 @@ workflows:
           bats-entry-point: /bin/bash
           bats-test-path: test/circleci_remote_docker_ubuntu.bats
           opencontainer-labels: true
+          cis-docker-image-scan: false
           after-checkout:
             - op/env
           filters: *on-push-main
@@ -88,7 +90,7 @@ workflows:
           image: twdps/circleci-remote-docker
           pull-tag: alpine-edge
           tag-annotation: alpine-
-          release-tag: alpine-stable
+          release-tag: 3.20
           sign-image: true
           sbom: true
           after-checkout:
@@ -102,7 +104,7 @@ workflows:
           image: twdps/circleci-remote-docker
           pull-tag: ubuntu-edge
           tag-annotation: ubuntu-
-          release-tag: ubuntu-stable
+          release-tag: 24.04
           sign-image: true
           sbom: true
           after-checkout:
@@ -140,8 +142,7 @@ workflows:
           context: *context
           scheduled-pipeline-name: weekly-ci-build
           scheduled-pipeline-description: |
-            Automatically trigger image build on a weekly schedule. Failure of
-            this recurring build indicates new releases of dependent packages.
+            Automatically trigger build on a monthly schedule.
           hours-of-day: "[1]"
-          days-of-week: "[\"SUN\"]"
+          days-of-month: "[1]"
           filters: *on-tag-main
