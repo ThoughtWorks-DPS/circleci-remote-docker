@@ -12,7 +12,7 @@ globals:
 
 on-push-main: &on-push-main
   branches:
-    only: /main/
+    only: /.*/
   tags:
     ignore: /.*/
 
