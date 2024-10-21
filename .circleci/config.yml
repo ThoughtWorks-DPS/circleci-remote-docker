@@ -90,7 +90,7 @@ workflows:
           image: twdps/circleci-remote-docker
           pull-tag: alpine-edge
           tag-annotation: alpine-
-          release-tag: 3.20
+          release-tag: "3.20"
           sign-image: true
           sbom: true
           after-checkout:
@@ -104,7 +104,7 @@ workflows:
           image: twdps/circleci-remote-docker
           pull-tag: ubuntu-edge
           tag-annotation: ubuntu-
-          release-tag: 24.04
+          release-tag: "24.04"
           sign-image: true
           sbom: true
           after-checkout:
